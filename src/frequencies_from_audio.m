@@ -15,10 +15,12 @@
 %   544352-wav-file-dft-without-fft
 %
 
-function frequencies_from_audio(audio_file, show_plot, hear_sound)
+function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
     arguments
         % The path to the audio file.
         audio_file (1, 1) string
+        % Maximum frequency to view.
+        max_freq (1, 1) double
         % 1 to show plot, otherwise 0
         show_plot (1, 1) double
         % 1 to hear sound, otherwise 0
@@ -28,7 +30,7 @@ function frequencies_from_audio(audio_file, show_plot, hear_sound)
     [data, sample_rate] = audioread(audio_file);
 
     % Configuration params for Fourier transforms.
-    freq_range = [0, 8000]; % Hz
+    freq_range = [0, max_freq]; % Hz
     dft_loop_reduction = 50; % set to 1 for no reduction (Hint: takes a long time)
 
     % To hear sound:
@@ -38,7 +40,7 @@ function frequencies_from_audio(audio_file, show_plot, hear_sound)
 
     data_len = length(data);
     steps = floor(data_len / 2) + 1;
-    hz = 0:steps:(sample_rate/2);
+    hz = linspace(0, sample_rate/2, steps);
 
     % Smooth birdcall audio audio for fft & dft
     signal = detrend(data(:,1))'; % transpose here for DFT loop later
@@ -49,7 +51,7 @@ function frequencies_from_audio(audio_file, show_plot, hear_sound)
         % Plot the data from the two audio file channels.
         figure(1);
         clf;
-        subplot(3, 1, 1);
+        subplot(2, 1, 1);
         % Include a small offset for left and right audio channels.
         plot(time, bsxfun(@plus, data, [.2, 0]));
         xlabel('Time (sec)');
@@ -57,50 +59,27 @@ function frequencies_from_audio(audio_file, show_plot, hear_sound)
         set(gca, YTick=[], XLim=time([1, end]));
     end
 
-    bcpow_fft = abs(fft( signal )/data_len).^2;
+    bcpow_fft = abs(fft(signal)/data_len).^2;
 
     if (show_plot)
-        subplot(3, 1, 2);
-        plot(hz, bcpow_fft(1:length(hz)), LineWidth=2);
+        subplot(2, 1, 2);
+        plot(hz, bcpow_fft(1:length(hz)), LineWidth=2, Color=[1, 0.5, 0]);
         xlabel('Frequency (Hz)'); ylabel('Power');
         title(['Frequency Domain using FFT with ', ...
                 num2str(length(bcpow_fft)), ...
                 ' points']);
         xlim(freq_range);
         % Make fft and dft y-limits be the same for comparison.
-        ylim_fft = get(gca,'ylim');
-    end
-    
-    fourier_time = (0:data_len - 1) / data_len;
-    fourier_coefs = zeros(size(signal));
-    h = waitbar(0,'Please wait for DFT loop...');
-    % DFT loop is very inefficient, it is used here for demonstration only.
-    for f_i = 1:dft_loop_reduction:data_len
-        
-        % Create complex sine wave.
-        csw = exp( -1i * 2*pi * (f_i-1) * fourier_time );
-        
-        % Compute dot product between sine wave and signal (Fourier coefficients).
-        fourier_coefs(f_i) = sum( signal .* csw );
-        
-   
-        % GUI to show progress for long calculation times.
-        waitbar(f_i / data_len);
-    end
-    close(h);
-
-    bcpow_dft = abs(fourier_coefs / data_len).^2;
-    
-    if (show_plot)
-        subplot(3, 1, 3);
-        plot(hz, bcpow_dft(1:length(hz)), LineWidth=2);
-        xlabel('Frequency (Hz)'); ylabel('Power');
-        title(['Frequency domain using DFT loop with ', ...
-                num2str(floor(length(bcpow_dft) / dft_loop_reduction)), ...
-                ' points']);
-        xlim(freq_range); ylim(ylim_fft);
     end
 
-    save(["data/dft_analysis_", audio_file, ".mat"], ...
-        "bcpow_dft");
+    fr_len = 2*length(hz);
+    
+    if (length(bcpow_fft) > fr_len)
+        bcpow_fft = bcpow_fft(1:length(fr_len));
+    end
+    
+    save("data/dft_analysis.mat", ...
+        "hz", ...
+        "bcpow_fft" ...
+    );
 end
