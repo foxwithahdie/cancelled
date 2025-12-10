@@ -31,8 +31,7 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
 
     % Configuration params for Fourier transforms.
     freq_range = [0, max_freq]; % Hz
-    dft_loop_reduction = 50; % set to 1 for no reduction (Hint: takes a long time)
-
+    
     % To hear sound:
     if (hear_sound)
         soundsc(data, sample_rate);
