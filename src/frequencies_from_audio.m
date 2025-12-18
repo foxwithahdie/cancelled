@@ -26,12 +26,13 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
         % 1 to hear sound, otherwise 0
         hear_sound (1, 1) double
     end
+
     % Load in birdcall (source: https://www.xeno-canto.org/403881).
     [data, sample_rate] = audioread(audio_file);
 
     % Configuration params for Fourier transforms.
     freq_range = [0, max_freq]; % Hz
-    
+
     % To hear sound:
     if (hear_sound)
         soundsc(data, sample_rate);
@@ -53,7 +54,9 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
         subplot(2, 1, 1);
         % Include a small offset for left and right audio channels.
         plot(time, bsxfun(@plus, data, [.2, 0]));
+        legend(["Left", "Right"])
         xlabel('Time (sec)');
+        ylabel("Amplitude");
         title('Time Domain');
         set(gca, YTick=[], XLim=time([1, end]));
     end
@@ -68,7 +71,6 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
                 num2str(length(bcpow_fft)), ...
                 ' points']);
         xlim(freq_range);
-        % Make fft and dft y-limits be the same for comparison.
     end
 
     fr_len = 2*length(hz);
@@ -76,9 +78,13 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
     if (length(bcpow_fft) > fr_len)
         bcpow_fft = bcpow_fft(1:length(fr_len));
     end
-    
-    save("data/dft_analysis.mat", ...
-        "hz", ...
-        "bcpow_fft" ...
-    );
+    variable_name = audio_file.replace("-", "_").erase("data/").erase(".wav").append("_fft");
+    variable_name_2 = audio_file.replace("-", "_").erase("data/").erase(".wav").append("_hz");
+    eval(variable_name.append(" = bcpow_fft;"));
+    eval(variable_name_2.append(" = hz;"));
+    if exist("data/matlab/fft_data.mat", "file")
+        save("data/matlab/fft_data.mat", variable_name, variable_name_2, "-append");
+    else
+        save("data/matlab/fft_data.mat", variable_name, variable_name_2);
+    end
 end
