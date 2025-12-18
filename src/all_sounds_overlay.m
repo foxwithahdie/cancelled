@@ -39,6 +39,7 @@ function all_sounds_overlay(max_freq)
     plot(longest_list(open_hz_list), open_wh1000xm4_feedback_fft, DisplayName="Feedback");
     plot(longest_list(open_hz_list), open_wh1000xm4_talking_fft, DisplayName="Talking");
     xlim([0, max_freq]);
+    xlabel("Frequency (Hz)"); ylabel("Magnitude");
     subtitle("Open");
     ylim_orig = get(gca, "ylim");
     legend();
@@ -50,6 +51,7 @@ function all_sounds_overlay(max_freq)
     plot(longest_list(closed_hz_list), closed_wh1000xm4_feedback_fft, DisplayName="Feedback");
     plot(longest_list(closed_hz_list), closed_wh1000xm4_talking_fft, DisplayName="Talking");
     xlim([0, max_freq]);
+    xlabel("Frequency (Hz)"); ylabel("Magnitude");
     ylim(ylim_orig);
     legend();
     subtitle("Closed");
@@ -61,6 +63,7 @@ function all_sounds_overlay(max_freq)
     plot(longest_list(closed_anc_hz_list), closed_wh1000xm4_anc_feedback_fft, DisplayName="Feedback");
     plot(longest_list(closed_anc_hz_list), closed_wh1000xm4_anc_talking_fft, DisplayName="Talking");
     xlim([0, max_freq]);
+    xlabel("Frequency (Hz)"); ylabel("Magnitude");
     ylim(ylim_orig);
     legend();
     subtitle("Closed, with ANC");

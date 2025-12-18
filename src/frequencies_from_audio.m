@@ -15,7 +15,7 @@
 %   544352-wav-file-dft-without-fft
 %
 
-function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
+function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound, save_data)
     arguments
         % The path to the audio file.
         audio_file (1, 1) string
@@ -25,9 +25,10 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
         show_plot (1, 1) double
         % 1 to hear sound, otherwise 0
         hear_sound (1, 1) double
+        % 1 to save data, otherwise 0
+        save_data (1, 1) double
     end
 
-    % Load in birdcall (source: https://www.xeno-canto.org/403881).
     [data, sample_rate] = audioread(audio_file);
 
     % Configuration params for Fourier transforms.
@@ -66,7 +67,7 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
     if (show_plot)
         subplot(2, 1, 2);
         plot(hz, bcpow_fft(1:length(hz)), LineWidth=2, Color=[1, 0.5, 0]);
-        xlabel('Frequency (Hz)'); ylabel('Power');
+        xlabel('Frequency (Hz)'); ylabel('Magnitude');
         title(['Frequency Domain using FFT with ', ...
                 num2str(length(bcpow_fft)), ...
                 ' points']);
@@ -82,9 +83,11 @@ function frequencies_from_audio(audio_file, max_freq, show_plot, hear_sound)
     variable_name_2 = audio_file.replace("-", "_").erase("data/").erase(".wav").append("_hz");
     eval(variable_name.append(" = bcpow_fft;"));
     eval(variable_name_2.append(" = hz;"));
-    if exist("data/matlab/fft_data.mat", "file")
-        save("data/matlab/fft_data.mat", variable_name, variable_name_2, "-append");
-    else
-        save("data/matlab/fft_data.mat", variable_name, variable_name_2);
+    if (save_data)
+        if exist("data/matlab/fft_data.mat", "file")
+            save("data/matlab/fft_data.mat", variable_name, variable_name_2, "-append");
+        else
+            save("data/matlab/fft_data.mat", variable_name, variable_name_2);
+        end
     end
 end

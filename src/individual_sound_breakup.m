@@ -36,15 +36,15 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(open_wh1000xm4_mariah_carey_hz, open_wh1000xm4_mariah_carey_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 subplot(3, 1, 2);
                 plot(open_wh1000xm4_mariah_carey_hz, closed_wh1000xm4_mariah_carey_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 subplot(3, 1, 3);
                 plot(open_wh1000xm4_mariah_carey_hz, closed_wh1000xm4_anc_mariah_carey_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
     
             elseif (max_val == length(closed_wh1000xm4_mariah_carey_hz))
                 % figure();
@@ -59,15 +59,15 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_mariah_carey_hz, open_wh1000xm4_mariah_carey_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_mariah_carey_hz, closed_wh1000xm4_mariah_carey_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_mariah_carey_hz, closed_wh1000xm4_anc_mariah_carey_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
             elseif (max_val == length(closed_wh1000xm4_anc_mariah_carey_hz))
                 % figure();
                 % plot(closed_wh1000xm4_anc_mariah_carey_hz, open_wh1000xm4_mariah_carey_fft, DisplayName="Open"); hold on
@@ -80,24 +80,24 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_anc_mariah_carey_hz, open_wh1000xm4_mariah_carey_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_anc_mariah_carey_hz, closed_wh1000xm4_mariah_carey_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_anc_mariah_carey_hz, closed_wh1000xm4_anc_mariah_carey_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             end
     
-            % xlabel("Frequency (Hz)"); ylabel("Power");
+            % xlabel("Frequency (Hz)"); ylabel("Magnitude");
             % title("Playing Mariah Carey Song with Different Headphone States");
             % legend();
             % hold off
@@ -129,19 +129,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(open_wh1000xm4_no_sound_hz, open_wh1000xm4_no_sound_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(open_wh1000xm4_no_sound_hz, closed_wh1000xm4_no_sound_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(open_wh1000xm4_no_sound_hz, closed_wh1000xm4_anc_no_sound_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_no_sound_hz))
@@ -157,19 +157,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_no_sound_hz, open_wh1000xm4_no_sound_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_no_sound_hz, closed_wh1000xm4_no_sound_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_no_sound_hz, closed_wh1000xm4_anc_no_sound_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_anc_no_sound_hz))
@@ -184,24 +184,24 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_anc_no_sound_hz, open_wh1000xm4_no_sound_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_anc_no_sound_hz, closed_wh1000xm4_no_sound_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_anc_no_sound_hz, closed_wh1000xm4_anc_no_sound_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             end
     
-            % xlabel("Frequency (Hz)"); ylabel("Power");
+            % xlabel("Frequency (Hz)"); ylabel("Magnitude");
             % title("No Sound Playing with Different Headphone States");
             % legend();
             % hold off
@@ -233,19 +233,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(open_wh1000xm4_feedback_hz, open_wh1000xm4_feedback_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(open_wh1000xm4_feedback_hz, closed_wh1000xm4_feedback_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(open_wh1000xm4_feedback_hz, closed_wh1000xm4_anc_feedback_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_feedback_hz))
@@ -261,19 +261,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_feedback_hz, open_wh1000xm4_feedback_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_feedback_hz, closed_wh1000xm4_feedback_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_feedback_hz, closed_wh1000xm4_anc_feedback_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_anc_feedback_hz))
@@ -289,24 +289,24 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_anc_feedback_hz, open_wh1000xm4_feedback_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_anc_feedback_hz, closed_wh1000xm4_feedback_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_anc_feedback_hz, closed_wh1000xm4_anc_feedback_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             end
     
-            % xlabel("Frequency (Hz)"); ylabel("Power");
+            % xlabel("Frequency (Hz)"); ylabel("Magnitude");
             % title("Playing Feedback with Different Headphone States");
             % legend();
             % hold off
@@ -338,19 +338,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(open_wh1000xm4_talking_hz, open_wh1000xm4_talking_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(open_wh1000xm4_talking_hz, closed_wh1000xm4_talking_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(open_wh1000xm4_talking_hz, closed_wh1000xm4_anc_talking_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_talking_hz))
@@ -366,19 +366,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_talking_hz, open_wh1000xm4_talking_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_talking_hz, closed_wh1000xm4_talking_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_talking_hz, closed_wh1000xm4_anc_talking_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_anc_talking_hz))
@@ -394,24 +394,24 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_anc_talking_hz, open_wh1000xm4_talking_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_anc_talking_hz, closed_wh1000xm4_talking_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_anc_talking_hz, closed_wh1000xm4_anc_talking_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             end
     
-            % xlabel("Frequency (Hz)"); ylabel("Power");
+            % xlabel("Frequency (Hz)"); ylabel("Magnitude");
             % title("Talking with Different Headphone States");
             % legend();
             % hold off
@@ -443,19 +443,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(open_wh1000xm4_vacuum_hz, open_wh1000xm4_vacuum_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(open_wh1000xm4_vacuum_hz, closed_wh1000xm4_vacuum_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(open_wh1000xm4_vacuum_hz, closed_wh1000xm4_anc_vacuum_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_vacuum_hz))
@@ -471,19 +471,19 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_vacuum_hz, open_wh1000xm4_vacuum_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_vacuum_hz, closed_wh1000xm4_vacuum_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_vacuum_hz, closed_wh1000xm4_anc_vacuum_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             elseif (max_val == length(closed_wh1000xm4_anc_vacuum_hz))
@@ -499,23 +499,23 @@ function individual_sound_breakup(sound_type, max_freq)
                 subplot(3, 1, 1);
                 plot(closed_wh1000xm4_anc_vacuum_hz, open_wh1000xm4_vacuum_fft);
                 subtitle("Open");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim_orig = get(gca, "ylim");
                 subplot(3, 1, 2);
                 plot(closed_wh1000xm4_anc_vacuum_hz, closed_wh1000xm4_vacuum_fft);
                 subtitle("Closed");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
                 subplot(3, 1, 3);
                 plot(closed_wh1000xm4_anc_vacuum_hz, closed_wh1000xm4_anc_vacuum_fft);
                 subtitle("Closed, with ANC");
-                xlabel("Frequency (Hz)"); ylabel("Power");
+                xlabel("Frequency (Hz)"); ylabel("Magnitude");
                 xlim([0, max_freq]);
                 ylim(ylim_orig);
             end
-            % xlabel("Frequency (Hz)"); ylabel("Power");
+            % xlabel("Frequency (Hz)"); ylabel("Magnitude");
             % title("Vacuuming with Different Headphone States");
             % legend();
             
